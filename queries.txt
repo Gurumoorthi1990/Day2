@@ -1,0 +1,5 @@
+create table guviclass(session_id int primary key, session_name varchar(100));
+create table attendance(student_id int primary key, first_name varchar(20), last_name varchar(20), session_id int, foreign key(session_id)references guviclass(session_id));
+create table activities(activity_id int primary key, activity_name varchar(250), session_id int, foreign key(session_id)references guviclass(session_id),student_id int, foreign key(student_id)references attendance(student_id));
+create table course(course_id int primary key, course_name varchar(50), course_duration varchar(20),session_id int, foreign key(session_id)references guviclass(session_id),student_id int, foreign key(student_id)references attendance(student_id));
+create table feedback(feedback_id int primary key, mentor_comments varchar(250), session_comments varchar(250),session_id int, foreign key(session_id)references guviclass(session_id),student_id int, foreign key(student_id)references attendance(student_id));
